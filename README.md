@@ -1,2 +1,2 @@
-# QR-L-ype---Child-Theme
+# QR Loype - A Divi child theme
 Wordpress - Divi Child Theme
