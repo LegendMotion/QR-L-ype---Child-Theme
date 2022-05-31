@@ -1,0 +1,1 @@
+<img src="<?php echo $_POST["logo"]; ?>" width="100%">

@@ -1,0 +1,1 @@
+<img src="forandringshuset_logo.png" width="100%">

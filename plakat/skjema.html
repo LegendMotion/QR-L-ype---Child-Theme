@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Load ckeditor -->
+    <script src="https://plakat.qrloype.no/ckeditor/build/ckeditor.js"></script>
+    <!-- Load Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+<meta charset="UTF-8">
+<style>
+ .ck-editor__editable
+ {
+    min-height: 150px !important;
+    max-height: 500px !important;
+ }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <form target="_blank" action="generert.php" method="post">
+  <div class="row">
+  <strong>Generer plakat (BETA)</strong>
+  <hr>
+  <br>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="id">Post navn</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="id" name="id" placeholder="Skriv inn din Post ID">
+      <small>Post navn er noe du kan bruke for &aring; huske igjen hvilken post dette er dersom noen skulle ha problemer eller trenger hjelp. Post navn kan for eksempel v&aelig;re tittelen p&aring; posten din eller post nummeret.</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="link">Link til post</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="link" name="link" placeholder="Lim inn link her">
+    </div>
+  </div>
+  <div class="row">
+      <p></p>
+  </div>
+  <div class="row">
+  	<hr>
+  <p></p>
+
+
+  
+  
+ <button type="button" class="collapsible"><strong>&Oslash;nsker du å legge inn ekstra innhold? (Avansert)</strong></button>
+<div class="content">
+
+    <div class="">
+      <label for="ekstra">Vil du ha en egen logo på plakaten?</label>
+    </div>
+    <div class="">
+      <select id="logoswitch" name="logoswitch">
+        <option value="nei">Nei</option>
+        <option value="ja">Ja</option>
+      </select>
+    </div>
+ 
+
+
+
+ <div class="">
+      <label for="subject">Legg inn egen logo her</label>
+    </div>
+    <div class="">
+      <input type="text" id="logo" name="logo" placeholder="Logo lenke"></textarea>
+    </div>
+   
+
+
+    <div class="">
+      <label for="ekstra">Ønsker du ekstra innhold på plakaten?</label>
+    </div>
+    <div class="">
+      <select id="infoswitch" name="infoswitch">
+        <option value="nei">Nei</option>
+        <option value="ja">Ja</option>
+      </select>
+    </div>
+    
+
+
+
+    <div class="">
+      <label for="subject">Legg inn infoboks</label>
+    </div>
+    <div class="">
+      <textarea id="editor" name="info" style="width: 100%;" rows="10" placeholder="Skriv noe her..."></textarea>
+    
+
+
+    </div>
+</div>
+  </div>
+  <br>
+  <div class="row">
+  <hr>
+  <p></p>
+  <strong>Har du kj&oslash;pt eget plakat design?</strong>
+<p>Lim inn plakat nummeret du fikk av LegendMotion. Dersom du &oslash;nsker &aring; bruke standard design eller er usikker om dette gjelder deg la feltet st&aring; tomt.</p>
+<input type="text" id="plakat" name="plakat" placeholder="Plakat ID">
+<p></p>
+<br>
+    <input type="submit" value="Lag min plakat!">
+  </div>
+  </form>
+</div>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+
+
+<style type="text/css">
+	/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #04AA6D;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-radius: 4px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #45a049;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+}
+</style>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+
+
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
+</script>
+
+</body>
+</html>
+
+

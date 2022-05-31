@@ -1,0 +1,54 @@
+# Her er ulike naveklasser som blir brukt i skjema
+
+
+id (Post navn)
+link
+
+logoswitch
+logo
+
+infoswitch
+info
+
+plakat (plakat theme id)
+
+
+# Her er show hide div classer
+
+logoboks
+infoboks
+
+
+<?php 
+
+$favlogo = $_POST["logoswitch"];
+
+switch ($favlogo) {
+  case "ja":
+    echo $_POST["logo"];
+    break;
+  case "nei":
+    require 'assets/logo.php';
+    break;
+  default:
+    require 'assets/logo.php';
+}
+
+?>
+
+<?php 
+
+$favinfo = $_POST["infoswitch"];
+
+switch ($favinfo) {
+  case "ja":
+    require 'assets/info.php';
+    break;
+  case "nei":
+    echo "";
+    break;
+  default:
+    echo "";
+}
+
+?>
